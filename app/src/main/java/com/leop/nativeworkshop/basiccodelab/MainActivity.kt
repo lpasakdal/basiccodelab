@@ -1,4 +1,4 @@
-package com.example.basicscodelab
+package com.leop.nativeworkshop.basiccodelab
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,17 +21,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.leop.nativeworkshop.basiccodelab.ui.theme.BasicCodelabTheme
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.saveable.rememberSaveable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             BasicCodelabTheme() {
-                MyApp(modifier = Modifier.fillMaxSize())
+                MyApp(modifier = Modifier)
             }
         }
     }
@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp(modifier: Modifier = Modifier) {
 
-    var shouldShowOnboarding by remember { mutableStateOf(true) }
+    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
 
     Surface(modifier) {
         if (shouldShowOnboarding) {
@@ -85,7 +85,7 @@ private fun Greetings(
     }
 }
 
-@Preview(showBackground = true, widthDp = 320, heightDp = 320)
+//@Preview(showBackground = true, widthDp = 320, heightDp = 320)
 @Composable
 fun OnboardingPreview() {
     BasicCodelabTheme {
@@ -96,7 +96,7 @@ fun OnboardingPreview() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by rememberSaveable { mutableStateOf(false) }
 
     val extraPadding = if (expanded) 48.dp else 0.dp
 
@@ -122,7 +122,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true, widthDp = 320)
+//@Preview(showBackground = true, widthDp = 320)
 @Composable
 fun GreetingPreview() {
     BasicCodelabTheme {
@@ -130,7 +130,7 @@ fun GreetingPreview() {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun MyAppPreview() {
     BasicCodelabTheme {
